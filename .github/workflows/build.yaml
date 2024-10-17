@@ -1,0 +1,34 @@
+name: Docker Image CI
+env:
+  REPO_NAME: eeholmes/training-docker-img
+
+on:
+  workflow_dispatch: null
+  push:
+    branches: main
+    paths: 
+      - Dockerfile
+      - install.R
+      - coastwatch-environment.yml
+      - .github/workflows/build.yml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        if: github.repository == '$REPO_NAME'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: Build the Docker image
+        if: github.repository == '$REPO_NAME'
+        run: |
+          docker build . -f Dockerfile  --tag ghcr.io/$REPO_NAME:latest
+      - name: Publish
+        if: github.repository == '$REPO_NAME'
+        run: |
+          docker push ghcr.io/$REPO_NAME:latest
