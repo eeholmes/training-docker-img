@@ -31,3 +31,5 @@ RUN wget https://www.star.nesdis.noaa.gov/socd/coastwatch/cwf/cwutils-4_0_0_198-
     tar -zxf cwutils-4_0_0_198-linux-x86_64.tar.gz && \
     ln -s /tmp/cwutils-4_0_0_198/bin/* ${NB_USER} && \
     rm -rf cwutils-4_0_0_198-linux-x86_64.tar.gz cwutils-4_0_0_198
+
+USER ${NB_USER}
