@@ -10,7 +10,7 @@ on:
       - Dockerfile
       - install.R
       - coastwatch-environment.yml
-      - .github/workflows/build.yml
+      - .github/workflows/build.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
