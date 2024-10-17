@@ -2,30 +2,7 @@ name: coastwatch
 channels:
   - conda-forge
 dependencies:
-  - python=3.9
-  - cartopy
-  - cmocean
-  - jupyter
-  - jupyterlab
-  - matplotlib
-  - netCDF4
-  - pandas
-  - pyproj 
-  - requests
-  - shapely
-  - statsmodels
-  - xarray
-  - numpy
-  - requests
-  - seaborn
-  - scikit-learn
-  - geopandas
-  - regionmask
   - erddapy
   - pymannkendall
-  - pyresample
-  - rioxarray
-  - rasterio
   - ecmwflibs
-platforms:
-  - linux-64
+
